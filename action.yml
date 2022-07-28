@@ -1,5 +1,9 @@
 name: 'cppcheck-annotation-action'
 description: 'Github action, which allows you to annotate C/C++ code in a pull request with warnings, errors, etc. from cppcheck static analysis tool'
+inputs:
+  github_token:
+    description: "secrets.GITHUB_TOKEN"
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
