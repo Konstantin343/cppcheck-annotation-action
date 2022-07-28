@@ -1,16 +1,18 @@
-name: cppcheck-action-other_options-test
+name: cppcheck-annotation-action-test
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   build:
-    name: cppcheck
+    name: cppcheck-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: cppcheck
+      - name: Run cppcheck-annotation-action
         uses: ./
         with:
           log-level: 'verbose'
@@ -21,9 +23,9 @@ jobs:
           annotation-failures: error
           annotation-warnings: style
 
-      - name: Annotate lines with errors
-        uses: yuzutech/annotations-action@v0.4.0
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          title: 'Results of CppCheck'
-          input: './annotations.json'
+      - name: Set up python
+        uses: actions/setup-python@v2
+
+      - name: Run tests
+        run:
+          python src/tests.py

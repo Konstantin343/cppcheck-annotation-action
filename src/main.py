@@ -69,7 +69,6 @@ def parse_cppcheck_xml(reportFile):
     errors = root.find("errors").findall("error")
     annotations = []
     for error in errors:
-        print(error.attrib)
         location = error.find("location")
         if location is None:
             continue
@@ -97,10 +96,6 @@ def main():
 
     annotations = parse_cppcheck_xml(OUTPUT_FILE)
     print(json.dumps(annotations, indent=2), file=open(INPUT_JSON_RESULTS_FILE, "w"))
-    print(json.dumps(annotations, indent=2))
-
-    if any(filter(lambda a: a["annotation_level"] == "failure", annotations)):
-        return 1
 
 
 if __name__ == '__main__':
