@@ -1,0 +1,32 @@
+name: cppcheck-annotation-action-test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: cppcheck-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run cppcheck-annotation-action
+        uses: ./
+        with:
+          log-level: 'verbose'
+          std: 'c++14'
+          platform: 'unix64'
+          suppress: missingIncludeSystem
+          sources: tests
+          annotation-failures: error
+          annotation-warnings: style
+
+      - name: Set up python
+        uses: actions/setup-python@v2
+
+      - name: Run tests
+        run:
+          python src/tests.py

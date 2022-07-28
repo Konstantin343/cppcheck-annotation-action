@@ -1,4 +1,4 @@
-FROM facthunder/cppcheck
+FROM facthunder/cppcheck:latest
 
 ADD ./src/main.py /main.py
 
