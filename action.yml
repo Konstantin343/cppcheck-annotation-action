@@ -1,9 +1,34 @@
 name: 'cppcheck-annotation-action'
 description: 'Github action, which allows you to annotate C/C++ code in a pull request with warnings, errors, etc. from cppcheck static analysis tool'
 inputs:
-  github_token:
-    description: "secrets.GITHUB_TOKEN"
-    required: true
+  json-results-file:
+    description: "File to store results in format described on https://docs.github.com/en/free-pro-team@latest/rest/reference/checks#annotations-items"
+    default: "annotations.json"
+    required: false
+  enable:
+    description: "Value for cppcheck argument --enable, comma-separated checks. See https://linux.die.net/man/1/cppcheck"
+    default: "all"
+    required: false
+  log-level:
+    description: "Log level for cppcheck command, possible values: quite, verbose. Other values will be ignored"
+    default: ""
+    required: false
+  std:
+    description: "C++ Standard for cppcheck command. See https://linux.die.net/man/1/cppcheck"
+    default: "c++20"
+    required: false
+  suppress:
+    description: "Comma-separated suppressions for --suppress parameter. See https://linux.die.net/man/1/cppcheck"
+    default: ""
+    required: false
+  additional-args:
+    description: "Additional arguments for cppcheck command. See https://linux.die.net/man/1/cppcheck"
+    default: ""
+    required: false
+  sources:
+    description: "Path to folder with source code. See https://linux.die.net/man/1/cppcheck"
+    default: "."
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
