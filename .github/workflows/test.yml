@@ -18,7 +18,8 @@ jobs:
           platform: 'unix64'
           suppress: missingIncludeSystem
           sources: tests
-          annotation-failures: style,error
+          annotation-failures: error
+          annotation-warnings: style
 
       - name: Annotate lines with errors
         uses: yuzutech/annotations-action@v0.4.0

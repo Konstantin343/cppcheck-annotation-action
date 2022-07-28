@@ -99,7 +99,7 @@ def main():
     print(json.dumps(annotations, indent=2), file=open(INPUT_JSON_RESULTS_FILE, "w"))
     print(json.dumps(annotations, indent=2))
 
-    if any(filter(lambda a: a["annotation_level"] == "error", annotations)):
+    if any(filter(lambda a: a["annotation_level"] == "failure", annotations)):
         return 1
 
 
