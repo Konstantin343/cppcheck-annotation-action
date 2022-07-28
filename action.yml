@@ -17,6 +17,10 @@ inputs:
     description: "C++ Standard for cppcheck command. See https://linux.die.net/man/1/cppcheck"
     default: "c++20"
     required: false
+  platform:
+    description: "Platform for cppcheck command. See https://linux.die.net/man/1/cppcheck"
+    default: "unix32"
+    required: false
   suppress:
     description: "Comma-separated suppressions for --suppress parameter. See https://linux.die.net/man/1/cppcheck"
     default: ""
@@ -28,6 +32,22 @@ inputs:
   sources:
     description: "Path to folder with source code. See https://linux.die.net/man/1/cppcheck"
     default: "."
+    required: false
+  annotation-warnings:
+    description: "Comma-separated severities of checks of cppcheck that should be warnings in GitHub annotations. See https://linux.die.net/man/1/cppcheck"
+    default: "warning"
+    required: false
+  annotation-notices:
+    description: "Comma-separated severities of checks of cppcheck that should be notices in GitHub annotations. See https://linux.die.net/man/1/cppcheck"
+    default: "information"
+    required: false
+  annotation-failures:
+    description: "Comma-separated severities of checks of cppcheck that should be failures in GitHub annotations. See https://linux.die.net/man/1/cppcheck"
+    default: "error"
+    required: false
+  annotation-level-default:
+    description: "Default level for all annotations that not presented in annotation-warnings, annotation-notices, annotation-failures. Possible values: notice, warning, failure"
+    default: "warning"
     required: false
 runs:
   using: 'docker'

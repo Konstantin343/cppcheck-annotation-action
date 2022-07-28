@@ -15,9 +15,10 @@ jobs:
         with:
           log-level: 'verbose'
           std: 'c++14'
-          suppress: unusedVariable
+          platform: 'unix64'
+          suppress: missingIncludeSystem
           sources: tests
-
+          annotation-failures: style,error
 
       - name: Annotate lines with errors
         uses: yuzutech/annotations-action@v0.4.0
