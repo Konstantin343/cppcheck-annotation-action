@@ -1,0 +1,23 @@
+name: cppcheck-action-other_options-test
+
+on:
+  push:
+
+jobs:
+  build:
+    name: cppcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: cppcheck
+        uses: ./
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Annotate lines with errors
+        uses: yuzutech/annotations-action@v0.4.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          title: 'Results of CppCheck'
+          input: './annotations.json'

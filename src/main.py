@@ -10,7 +10,7 @@ def main():
         "--output-file=report.xml",
         "--enable=all",
         "--suppress=missingIncludeSystem",
-        "/home/test/tests/a.cpp"
+        "/github/workspace/tests/a.cpp"
     ), capture_output=True, check=False).stdout)
 
     root = ElementTree.parse('report.xml').getroot()
