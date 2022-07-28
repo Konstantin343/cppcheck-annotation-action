@@ -13,7 +13,11 @@ jobs:
       - name: cppcheck
         uses: ./
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          log-level: 'verbose'
+          std: 'c++14'
+          suppress: unusedVariable
+          sources: tests
+
 
       - name: Annotate lines with errors
         uses: yuzutech/annotations-action@v0.4.0
