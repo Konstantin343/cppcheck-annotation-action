@@ -1,4 +1,4 @@
-name: cppcheck-annotation-action-test
+name: Tests
 
 on:
   push:

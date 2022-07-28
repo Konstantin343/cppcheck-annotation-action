@@ -2,7 +2,7 @@ name: 'cppcheck-annotation-action'
 description: 'Github action, which allows you to annotate C/C++ code in a pull request with warnings, errors, etc. from cppcheck static analysis tool'
 inputs:
   json-results-file:
-    description: "File to store results in format described on https://docs.github.com/en/free-pro-team@latest/rest/reference/checks#annotations-items"
+    description: "File to store results in format described on https://docs.github.com/en/rest/checks/runs#create-a-check-run--parameters"
     default: "annotations.json"
     required: false
   enable:
