@@ -61,7 +61,8 @@ def get_args():
         args.extend(additional_args)
 
     if INPUT_SOURCES != "":
-        args.append(INPUT_SOURCES)
+        sources = filter(lambda arg: arg != "", INPUT_SOURCES.split(" "))
+        args.extend(sources)
 
     return args
 
